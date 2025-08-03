@@ -2,7 +2,7 @@
 # Projeto Gomes Imóveis - Uma Plataforma Full-Stack para um Negócio Real
 
 ## 🚀 Acesse o Site Online
-**[Clique aqui para ver o projeto em produção!](https://site-imobiliaria-jet.vercel.app)** *(Substitua pelo seu link final da Vercel, se for diferente)*
+**[Clique aqui para ver o projeto em produção!](https://site-imobiliaria-jet.vercel.app)** 
 
 ---
 

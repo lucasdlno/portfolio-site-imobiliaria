@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Imovel {
+  id               Int      @id @default(autoincrement())
+  titulo           String
+  descricao        String?
+  preco            Float
+  quartos          Int
+  banheiros        Int
+  area_total       Int
+  cidade           String
+  bairro           String
+  imagem_principal String   
+  status           String   @default("Venda") 
+  data_criacao     DateTime @default(now())
+
+  // CAMPO NOVO: Define que um Imovel pode ter uma LISTA de Imagens.
+  imagens          Imagem[] 
+}
+
+// MODELO NOVO: Nossa tabela para guardar as URLs das imagens.
+model Imagem {
+  id       Int    @id @default(autoincrement())
+  url      String // URL da imagem, ex: /images/foto-sala.jpg
+
+  // A "cola" que liga esta Imagem a um Imovel específico.
+  imovel   Imovel @relation(fields: [imovelId], references: [id], onDelete: Cascade)
+  imovelId Int    // Este campo guardará o ID do Imovel ao qual a imagem pertence.
+}
+
+// ... (seus modelos Imovel e Imagem)
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique // O email de login deve ser único
+  password String   // Guardaremos a senha criptografada (hash) aqui
+}
